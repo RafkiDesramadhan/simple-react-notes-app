@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const URL = "https://notes-application-2.herokuapp.com/api/v1";
+const URL = process.env.REACT_APP_API_URL;
 
 export const getNotes = createAsyncThunk(
   "notes/getNotes",
@@ -27,7 +27,6 @@ export const getNotesById = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log(response.data.notes.notes);
     return response.data.notes;
   }
 );
@@ -45,7 +44,7 @@ export const addNotes = createAsyncThunk(
         note,
         date: new Date().toISOString(),
       };
-      const response = await axios.post(`${URL}/login`, postData, axiosConfig);
+      const response = await axios.post(`${URL}/notes`, postData, axiosConfig);
       return response.data;
     } catch (error) {
       console.log(error);

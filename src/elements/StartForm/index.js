@@ -13,7 +13,7 @@ export default function StartForm(props) {
   const [msg, setMsg] = useState("");
 
   const navigate = useNavigate();
-  const URL = "https://notes-application-2.herokuapp.com/api/v1";
+  const URL = process.env.REACT_APP_API_URL;
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -94,7 +94,10 @@ export default function StartForm(props) {
                   </div>
                   <p className="lead mt-3" style={{ fontSize: "18px" }}>
                     Don't have an account yet?{" "}
-                    <a href="/register"> Sign Up Here!</a>
+                    <Button type="link" href="/register">
+                      {" "}
+                      Sign Up Here!
+                    </Button>
                   </p>
                   <Button className="btn" type="button" isSecondary hasShadow>
                     <i className="fa-solid fa-arrow-right-to-bracket"></i> Login

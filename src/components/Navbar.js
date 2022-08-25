@@ -3,6 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import propTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import Button from "../elements/Button";
 
 const URL = "https://notes-application-2.herokuapp.com/api/v1";
 
@@ -17,7 +18,7 @@ export default function Navbar(props) {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Yes",
       }).then((result) => {
         if (result.isConfirmed) {
           axios.delete(`${URL}/logout`);
@@ -47,34 +48,37 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a
+              <Button
+                type="link"
                 className={
                   props.path === "/home" ? "nav-link active" : "nav-link"
                 }
                 href="/home"
               >
                 Home
-              </a>
+              </Button>
             </li>
             <li className="nav-item">
-              <a
+              <Button
+                type="link"
                 className={
                   props.path === "/notes" ? "nav-link active" : "nav-link"
                 }
                 href="/notes"
               >
                 Notes
-              </a>
+              </Button>
             </li>
             <li className="nav-item">
-              <a
+              <Button
+                type="link"
                 className={
                   props.path === "/about" ? "nav-link active" : "nav-link"
                 }
                 href="/about"
               >
                 About
-              </a>
+              </Button>
             </li>
             <li className="nav-item">
               <button

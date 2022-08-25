@@ -17,7 +17,7 @@ export default function Form(props) {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const URL = "https://notes-application-2.herokuapp.com/api/v1";
+  const URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     refreshToken();

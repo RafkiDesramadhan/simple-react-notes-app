@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../elements/Button";
 import TimeAgo from "../../elements/TimeAgo";
 
-const URL = "https://notes-application-2.herokuapp.com/api/v1";
+const URL = process.env.REACT_APP_API_URL;
 
 export default function ContentNotes() {
   const [msg, setMsg] = useState("");
@@ -22,7 +22,7 @@ export default function ContentNotes() {
   useEffect(() => {
     refreshToken();
     dispatch(getNotes({ axiosJWT, token }));
-  });
+  }, [dispatch]);
 
   const refreshToken = async () => {
     try {
